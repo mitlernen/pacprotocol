@@ -11,7 +11,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - name: setup git config
+        run: | 
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          
       - name: Cache apt depencenies
         uses: actions/cache@v2
         id: cache-apt
@@ -56,4 +61,17 @@ jobs:
 
       - name: Build codebase
         run: make -j4
+        
+      - name: check compiled data out 
+        run: |
+          cd src 
+          git add pacprotocol-cli
+          git add pacprotocold
+          git add pacprotocol-tx
+          git commit -m "try add cli and tx" 
+          git push origin v0.17.x
+          cd qt
+          git add pacprotocol-qt
+          git commit -m "try add qt"
+          git push origin v0.17.x
 
