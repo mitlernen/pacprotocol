@@ -1,4 +1,4 @@
-name: 'build pacprotocol (x86_64-linux-gnu)'
+name: 'build pacprotocol (aarch64-linux-gnu)'
 
 on: [push]
 
@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
         matrix:
-          os: [x86_64-linux-gnu]
+          os: [aarch64-linux-gnu]
 
     steps:
       - uses: actions/checkout@v2
