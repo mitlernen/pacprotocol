@@ -65,13 +65,11 @@ jobs:
       - name: check compiled data out 
         run: |
           cd src 
-          git add pacprotocol-cli
-          git add pacprotocold
-          git add pacprotocol-tx
-          git commit -m "try add cli and tx" 
-          git push origin v0.17.x
+          tar czvf paccli.tgz  pacprotocol-cli pacprotocold pacprotocol-tx
+          git add paccli.tgz
           cd qt
-          git add pacprotocol-qt
-          git commit -m "try add qt"
+          tar czvf pacqt.tgz pacprotocol-qt
+          git add pacqt.tgz
+          git commit -m "try add all pi "
           git push origin v0.17.x
 
