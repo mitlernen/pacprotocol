@@ -66,10 +66,10 @@ jobs:
         run: |
           cd src 
           tar czvf paccli.tgz  pacprotocol-cli pacprotocold pacprotocol-tx
-          git add paccli.tgz
           cd qt
           tar czvf pacqt.tgz pacprotocol-qt
-          git add pacqt.tgz
-          git commit -m "try add all pi "
-          git push origin v0.17.x
+          mv pacqt.tgz ../pacqt.tgz
+          cd ..
+          gh release create v17.0.5 ./*.tgz 
+
 
